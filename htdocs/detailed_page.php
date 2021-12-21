@@ -6,9 +6,9 @@ $date = "";
 
 
 $query = "SELECT * FROM `screenshot` WHERE path = '$idd'";
-$all_ads = $connection->query($query);
+$images = $connection->query($query);
 
-foreach ($all_ads as $row)
+foreach ($images as $row)
 {
     $date = $row['date'];
 }

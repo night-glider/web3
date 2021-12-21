@@ -2,8 +2,8 @@
 
 <?php
 
-$query = "SELECT * FROM `screenshot` WHERE public = 1 ORDER BY `date` DESC";
-$all_ads = $connection->query($query);
+$query = "SELECT * FROM `screenshot` WHERE public = 1 ORDER BY `date` DESC LIMIT 2";
+$images = $connection->query($query);
 
 $output = "";
 
@@ -68,9 +68,9 @@ $output = "";
   <div class="upload-shot">
     Перетащите сюда скриншот
   </div>
-  <div class="screenshot-container">
+  <div id="images-container" class="screenshot-container">
 
-    <?php foreach ($all_ads as $row) : ?>
+    <?php foreach ($images as $row) : ?>
         <a href="detailed_page.php?idd=<?= $row['path'] ?>">
             <div class="screenshot">
               <img src="images/<?= $row['path'] ?>">
@@ -82,10 +82,12 @@ $output = "";
     ?>
 
   </div>
+  <button id="load_new_images" offset = "2">ЗАГРУЗИТЬ СЛЕДУЮЩЕЕ</button>
   <footer>
     <span>nightgliderdev@gmail.com</span>
     <a href="https://vk.com/zhidkov_ivan1">ВК</a>
   </footer>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="script.js"></script>
 </html>
